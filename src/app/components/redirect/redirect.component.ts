@@ -23,12 +23,13 @@ export class RedirectComponent implements OnInit {
         this.authService.redirect(parameter["type"]).subscribe(
           (redirect: Redirect) => {
             window.location.href = redirect.url;
-            console.log(redirect.url);
+          },
+          (error) => {
+            this.route.navigateByUrl("/login");
           }
+            
         )
       }
     )
-    // this.authService.redirect().subscribe
-    // document.location.href = '';
   }
 }
