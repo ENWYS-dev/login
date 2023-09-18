@@ -1,0 +1,31 @@
+<h3>Login</h3>
+
+<form [formGroup]="login" class="login">
+    <label>
+        <p>Benutzername</p>
+        <span>
+            <input type="text" formControlName="username">
+        </span>
+        
+    </label>
+    
+    <label>
+        <p>Passwort</p>
+        <span>
+            <input [type]="this.loginPasswordVisibility ? 'text' : 'password'" id="loginPassword" formControlName="password">
+            <i *ngIf="this.loginPasswordVisibility" class="material-symbols-outlined" (click)="this.passwordChangeType()">
+                visibility
+            </i>
+            <i *ngIf="!this.loginPasswordVisibility" class="material-symbols-outlined" (click)="this.passwordChangeType()">
+                visibility_off
+            </i>
+        </span>
+        <a routerLink="/password-reset">Passwort Vergessen?</a>
+    </label>
+
+    <p class="error">{{ this.loginError }}</p>
+
+    <div class="btn">
+        <input type="submit" (click)="loginUser()" value="Login">
+    </div>
+</form>
