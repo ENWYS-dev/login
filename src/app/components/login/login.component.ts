@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -6,13 +6,14 @@ import { Login } from 'src/app/dtos/login';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginReturn } from 'src/app/dtos/login-retrun';
 import cfg from '../../config.json';
+import { Session } from 'src/app/dtos/session';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService, 
@@ -27,6 +28,17 @@ export class LoginComponent {
 
   loginPasswordVisibility = false;
   loginError = '';
+  loggedIn = false;
+
+  ngOnInit() {
+    this.authService.session().subscribe(
+      (session: Session) => {
+        if(session.loggedIn) {
+          this.loggedIn = true;
+        }
+      }
+    );
+  }
 
   loginUser() {
     this.loginError = '';

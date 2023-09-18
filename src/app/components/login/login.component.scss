@@ -80,3 +80,31 @@ h3 {
         }
     }
 }
+
+.direct {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .link {
+        width: 7rem;
+        height: 2rem;
+        margin: 4rem auto 0 auto;
+        font-size: .9rem;
+        border-radius: 100rem;
+        border: 0;
+        background-color: #0295fcBB;
+        transition: background-color 50ms ease-in-out;
+        cursor: pointer;
+    }
+
+    .logout {
+        display: flex;
+        color: #000;
+        text-decoration: none;
+        margin-top: auto;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

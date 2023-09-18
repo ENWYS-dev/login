@@ -1,6 +1,6 @@
-<h3>Login</h3>
+<h3 *ngIf="!this.loggedIn">Login</h3>
 
-<form [formGroup]="login" class="login">
+<form [formGroup]="login" class="login" *ngIf="!this.loggedIn">
     <label>
         <p>Benutzername</p>
         <span>
@@ -29,3 +29,14 @@
         <input type="submit" (click)="loginUser()" value="Login">
     </div>
 </form>
+
+<div class="direct" *ngIf="this.loggedIn">
+    <h3>Angemeldet</h3>
+
+    <button class="link" routerLink="/redirect">Weiter</button>
+
+    <button class="logout" routerLink="/logout">
+        <mat-icon>logout</mat-icon>
+        Logout
+    </button>
+</div>
