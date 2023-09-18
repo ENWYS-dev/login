@@ -16,9 +16,9 @@ export class LogoutComponent implements OnInit {
     private route: Router
   ) {}
 
-  ngOnInit () {
-    this.authService.logout().subscribe();
-    this.cookieService.delete("SESSION");
-    this.route.navigateByUrl('/login')
+  async ngOnInit () {
+    await this.authService.logout().subscribe();
+    await this.cookieService.delete("SESSION");
+    this.route.navigateByUrl('/login');
   }
 }
